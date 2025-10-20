@@ -1,9 +1,10 @@
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import Login from '../pages/login';
 
 export default function Index() {
     return(
-        <View>
-            <Text>Hello World</Text>
+        <View style={{flex:1}}>
+            <Login />
         </View>
     )
 }
