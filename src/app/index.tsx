@@ -1,10 +1,14 @@
 import { View } from 'react-native';
-import Login from '../pages/login';
+import RegisterUser from '../pages/registerUser';
 
 export default function Index() {
     return(
         <View style={{flex:1}}>
-            <Login />
+            {/* <Login /> */}
+            <RegisterUser />
         </View>
     )
 }
+
+        
+
