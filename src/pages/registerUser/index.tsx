@@ -42,7 +42,7 @@ export default function RegisterUserPage() {
             </View>
 
             <TouchableOpacity style={styles.button}>
-                <Text>Registrar</Text>
+                <Text style={styles.buttonText}>Cadastrar</Text>
             </TouchableOpacity>
         </View>
     );
