@@ -1,9 +1,11 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 
 
 export default function RegisterUserPage() {
+    const navigation = useNavigation<any>();
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Cadastro de Usuário</Text>
@@ -42,7 +44,7 @@ export default function RegisterUserPage() {
             </View>
 
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Cadastrar</Text>
+                <Text style={styles.buttonText} onPress={() => navigation.navigate('Home')}>Cadastrar</Text>
             </TouchableOpacity>
         </View>
     );

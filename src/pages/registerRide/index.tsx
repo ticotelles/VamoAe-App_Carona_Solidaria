@@ -1,8 +1,10 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import styles from "./styles";
 
 export default function RegisterRidePage() {
+    const navigation = useNavigation<any>();
     const [origem, setOrigem] = useState('');
     const [destino, setDestino] = useState('');
     const [whatsapp, setWhatsapp] = useState('');
