@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
@@ -6,12 +7,13 @@ import styles from './styles';
 
 
 
-
 export default function LoginPage() {
+  const navigation = useNavigation<any>();
   const [text, setText] = useState('');
   const [password, setPassword] = useState('');
 
   return (
+ 
         <View style={styles.container}>
           <Image
        
@@ -37,7 +39,9 @@ export default function LoginPage() {
 
           <View style={styles.wrapperCadastro}>
             <Text style={styles.textNaoCadastro}>Não possui cadastro?</Text>
-            <Text style={styles.textCadastro}>Cadastre-se</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('RegisterUser')}>
+              <Text style={styles.textCadastro}>Cadastre-se</Text>
+            </TouchableOpacity>
           </View>
         </View>
   );
