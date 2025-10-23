@@ -33,7 +33,7 @@ export default function LoginPage() {
             onChangeText={setPassword}
             value={String(password)}
           />
-          <TouchableOpacity style={styles.buttonLogin}>
+          <TouchableOpacity style={styles.buttonLogin} onPress={() => navigation.navigate('Home')}>
             <Text>Entrar</Text>
           </TouchableOpacity>
 

@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
   wrapperform:{
     padding:16,
-    justifyContent:'space-between',
+    // justifyContent:'space-between',
     gap:12,
     height:'50%',
     width:'100%',

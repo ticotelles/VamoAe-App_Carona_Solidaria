@@ -5,12 +5,15 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
         backgroundColor:'#F3F4F6',
- 
+      
     },
     cardRide: {
         backgroundColor: '#FFFFFF',
         padding: 15,
         borderRadius: 12,
+          marginTop: 10,
+        marginBottom: 10,
+ 
     },
     wrapperNamePrice: {
         flexDirection: 'row',
