@@ -33,14 +33,18 @@ const styles = StyleSheet.create({
   },
   button:{
     paddingVertical:12,
-    paddingHorizontal:42,
+    // paddingHorizontal:42,
     borderRadius:8,
     backgroundColor:'#EA9C36',
+
+  
   },
   buttonText:{
     color:'#081B43',
     fontWeight:'bold',
     fontSize:16,
+    textAlign:'center'
+  
   },
     errorText:{
     color: 'red',

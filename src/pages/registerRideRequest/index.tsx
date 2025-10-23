@@ -1,71 +1,153 @@
-import { useState } from "react";
-import { TextInput, TouchableOpacity, View } from "react-native";
-
-import { Text } from "react-native";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useNavigation } from '@react-navigation/native';
+import { Controller, useForm } from 'react-hook-form';
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { z } from 'zod';
 import styles from "./styles";
 
-export default function RegisterRideRequestPage(){
+const registerRideRequestSchema = z.object({
+    origem: z.string().min(2, { message: "Origem deve ter pelo menos 2 caracteres" }),
+    destino: z.string().min(2, { message: "Destino deve ter pelo menos 2 caracteres" }),
+    whatsapp: z.string().min(10, { message: "Whatsapp deve ter pelo menos 10 dígitos" }),
+    data: z.string().min(10, { message: "Data deve estar no formato DD/MM/AAAA" }),
+    hora: z.string().min(5, { message: "Hora deve estar no formato HH:MM" }),
+});
 
-    const [origem, setOrigem] = useState('');
-    const [destino, setDestino] = useState('');
-    const [whatsapp, setWhatsapp] = useState('');
-    const [data, setData] = useState('');
-    const [hora, setHora] = useState('');
+type RegisterRideRequestSchema = z.infer<typeof registerRideRequestSchema>;
 
-    return(
+export default function RegisterRideRequestPage() {
+    const navigation = useNavigation<any>();
+    const { control, handleSubmit } = useForm<RegisterRideRequestSchema>({
+        resolver: zodResolver(registerRideRequestSchema),
+    })
+
+    const onSubmit = (data: RegisterRideRequestSchema) => {
+        console.log('Dados da solicitação de carona:', data);
+        navigation.navigate('Home');
+    }
+
+    return (
         <View style={styles.container}>
 
             <Text style={styles.text}>Solicitar Carona</Text>
 
-               
-                <View style={styles.wrapperform}>
-                    <TextInput
-                        placeholder="Origem"
-                        style={styles.input}
-                        onChangeText={setOrigem}
-                        value={origem}
-                        autoCapitalize="words"
-                    />
-                    <TextInput
-                        placeholder="Destino"
-                        style={styles.input}
-                        onChangeText={setDestino}
-                        value={destino}
-                        autoCapitalize="words"
-                    />
-                    <TextInput
-                        placeholder="Whatsapp"
-                        style={styles.input}
-                        onChangeText={setWhatsapp}
-                        value={whatsapp}
-                        keyboardType="phone-pad"
-                        maxLength={15}
-                    />
-                    <TextInput
-                        placeholder="Data - 20/10/2025"
-                        style={styles.input}
-                        onChangeText={setData}
-                        value={data}
-                        // formato sugerido: DD/MM/YYYY
-                        keyboardType="numeric"
-                        maxLength={10}
-                    />
-                    <TextInput
-                        placeholder="Hora - 00:00"
-                        style={styles.input}
-                        onChangeText={setHora}
-                        value={hora}
-                        keyboardType="numeric"
-                        maxLength={5}
-                    />
 
-                </View>
+            <View style={styles.wrapperform}>
 
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Cadastrar</Text>
-                </TouchableOpacity>
-            
+                <Controller
+                    control={control}
+                    name="origem"
+                    render={({ field, fieldState }) => (
+                        <>
+                        <Text>Origem</Text>
+                            <TextInput
+                                placeholder="Porteirinha"
+                                style={styles.input}
+                                onChangeText={field.onChange}
+                                value={field.value}
+                                autoCapitalize="words"
+                            />
+                            {fieldState.error?.message && (
+                                <Text style={styles.errorText}>{fieldState.error.message}</Text>
+                            )}
 
-        </View>    
+                        </>
+                    )}
+
+                />
+
+               <Controller
+                    control={control}
+                    name="destino"
+                    render={({ field, fieldState }) => (
+                        <>
+                        <Text>Destino</Text>
+                            <TextInput
+                                placeholder="Montes Claros"
+                                style={styles.input}
+                                onChangeText={field.onChange}
+                                value={field.value}
+                                autoCapitalize="words"
+                            />
+                            {fieldState.error?.message && (
+                                <Text style={styles.errorText}>{fieldState.error.message}</Text>
+                            )}
+
+                        </>
+                    )}
+
+                />
+                <Controller
+                    control={control}
+                    name="whatsapp"
+                    render={({ field, fieldState }) => (
+                        <>
+                        <Text>Whatsapp</Text>
+                            <TextInput
+                                placeholder="9999-9999"
+                                style={styles.input}
+                                onChangeText={field.onChange}
+                                value={field.value}
+                                autoCapitalize="words"
+                            />
+                            {fieldState.error?.message && (
+                                <Text style={styles.errorText}>{fieldState.error.message}</Text>
+                            )}
+
+                        </>
+                    )}
+
+                />
+                <Controller
+                    control={control}
+                    name="data"
+                    render={({ field, fieldState }) => (
+                        <>
+                        <Text>Data</Text>
+                            <TextInput
+                                placeholder="ex:20/10/2025"
+                                style={styles.input}
+                                onChangeText={field.onChange}
+                                value={field.value}
+                                autoCapitalize="words"
+                            />
+                            {fieldState.error?.message && (
+                                <Text style={styles.errorText}>{fieldState.error.message}</Text>
+                            )}
+
+                        </>
+                    )}
+
+                />
+                <Controller
+                    control={control}
+                    name="hora"
+                    render={({ field, fieldState }) => (
+                        <>
+                        <Text>Hora</Text>
+                            <TextInput
+                                placeholder="ex: 00:00"
+                                style={styles.input}
+                                onChangeText={field.onChange}
+                                value={field.value}
+                                autoCapitalize="words"
+                            />
+                            {fieldState.error?.message && (
+                                <Text style={styles.errorText}>{fieldState.error.message}</Text>
+                            )}
+
+                        </>
+                    )}
+
+                />
+
+            </View>
+
+            <TouchableOpacity style={styles.button} onPress={handleSubmit(onSubmit)}>
+                <Text style={styles.buttonText}>Cadastrar</Text>
+            </TouchableOpacity>
+
+
+        </View>
     )
 }

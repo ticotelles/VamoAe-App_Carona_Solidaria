@@ -23,9 +23,11 @@ const styles = StyleSheet.create({
   },
   wrapperform:{
     padding:16,
-    justifyContent:'space-between',
+    // justifyContent:'space-between',
+    // backgroundColor:'red',
     gap:12,
-    height:'50%',
+    // height:'50%',
+    flex:1,
     width:'100%',
   },
   button:{
@@ -38,6 +40,9 @@ const styles = StyleSheet.create({
     color:'#081B43',
     fontWeight:'bold',
     fontSize:16,
+  },
+  errorText:{
+    color: 'red',
   }
 });
 
