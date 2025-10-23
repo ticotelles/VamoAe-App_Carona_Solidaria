@@ -48,7 +48,10 @@ const styles = StyleSheet.create({
   textCadastro:{
     color:'#000000',
     fontWeight: 'bold',
-  }
+  },
+    errorText:{
+    color: 'red',
+  },
 });
 
 export default styles;

@@ -6,8 +6,8 @@ const styles = StyleSheet.create({
     padding: 16,
     // paddingTop: 64,
     justifyContent: "space-evenly",
-    alignItems: "center",
-    gap: 12,
+    // alignItems: "center",
+    // gap: 12,
     backgroundColor:'#F9FAFB'
   },
   text: {
@@ -20,7 +20,9 @@ const styles = StyleSheet.create({
     borderRadius:8,
     backgroundColor:'#FFFFFF',
     padding:15,
-    paddingTop:18,
+    // paddingTop:18,
+    width:'100%',
+    margin:0
     
   },
   wrapperform:{
@@ -41,6 +43,13 @@ const styles = StyleSheet.create({
     color:'#081B43',
     fontWeight:'bold',
     fontSize:16,
+  },
+  errorText:{
+    color: 'red',
+  },
+  label:{
+    margin:0,
+    padding:0
   }
 });
 
