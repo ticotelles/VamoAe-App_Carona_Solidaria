@@ -13,8 +13,10 @@ const Carona = [
         destino: 'Montes Claros',
         hora: '13:00',
         data: '20/10/2025',
-        valor: 45,
-        contato: '99999-9999'
+        valor: " - ",
+        contato: '99999-9999',
+        isRideRequest: false,
+
     },
     {
         nome: 'Arthur Telles',
@@ -23,7 +25,28 @@ const Carona = [
         hora: '13:00',
         data: '20/10/2025',
         valor: 45,
-        contato: '99999-9999'
+        contato: '99999-9999',
+        isRideRequest: true
+    },
+    {
+        nome: 'Arthur Telles',
+        origem: 'Porteirinha',
+        destino: 'Montes Claros',
+        hora: '13:00',
+        data: '20/10/2025',
+        valor: " - ",
+        contato: '99999-9999',
+        isRideRequest: false
+    },
+    {
+        nome: 'Arthur Telles',
+        origem: 'Porteirinha',
+        destino: 'Montes Claros',
+        hora: '13:00',
+        data: '20/10/2025',
+        valor: " - ",
+        contato: '99999-9999',
+        isRideRequest: false
     },
     {
         nome: 'Arthur Telles',
@@ -32,25 +55,8 @@ const Carona = [
         hora: '13:00',
         data: '20/10/2025',
         valor: 45,
-        contato: '99999-9999'
-    },
-    {
-        nome: 'Arthur Telles',
-        origem: 'Porteirinha',
-        destino: 'Montes Claros',
-        hora: '13:00',
-        data: '20/10/2025',
-        valor: 45,
-        contato: '99999-9999'
-    },
-    {
-        nome: 'Arthur Telles',
-        origem: 'Porteirinha',
-        destino: 'Montes Claros',
-        hora: '13:00',
-        data: '20/10/2025',
-        valor: 45,
-        contato: '99999-9999'
+        contato: '99999-9999',
+        isRideRequest: true
     },
 ]
 
@@ -66,11 +72,23 @@ export default function HomePage() {
                     <View style={styles.cardRide}>
                         <View style={styles.wrapperNamePrice}>
                             <Text style={styles.nameTextCard}>{item.nome}</Text>
-                            <View style={styles.wrapperPrice}>
-                                {/* <AntDesign name="plus" size={18} color="green" style={{borderRadius:100, backgroundColor:'#DCFCE7', padding: 5}}/> */}
-                                <AntDesign name="like" size={24} color="#EA580C"  style={{borderRadius:100, backgroundColor:'#DCFCE7', padding: 5}}/>
-                                <Text style={styles.textStatusOffer}>Oferecendo</Text>
-                            </View>
+
+                            {item.isRideRequest ? (
+                                <View style={styles.wrapperPrice}>
+                                    {/* <AntDesign name="plus" size={18} color="green" style={{borderRadius:100, backgroundColor:'#DCFCE7', padding: 5}}/> */}
+                                    <AntDesign name="plus" size={15} color="green" style={{ borderRadius: 100, backgroundColor: '#DCFCE7', padding: 5 }} />
+                                    <Text style={styles.textStatusOffer}>Oferecendo</Text>
+                                </View>
+                            ) : (
+                                <View style={styles.wrapperPrice}>
+                                    {/* <AntDesign name="plus" size={18} color="green" style={{borderRadius:100, backgroundColor:'#DCFCE7', padding: 5}}/> */}
+                                    <AntDesign name="like" size={15} color="#EA580C" style={{ borderRadius: 100, backgroundColor: '#FFEDD5', padding: 5 }} />
+                                    <Text style={styles.textStatusRequest}>Pedindo</Text>
+                                </View>
+                            )}
+
+
+
                             <Text style={styles.priceTextCard}>R$ {item.valor}</Text>
 
                         </View>

@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     contactTextCard: {
         fontWeight: 'bold',
         fontSize: 16,
-        color: '#9CA3AF'
+        color: '#FFFF'
     },
     nameTextCard: {
         fontWeight: 500,
@@ -76,14 +76,14 @@ const styles = StyleSheet.create({
     },
     textStatusOffer:{
         color:'#16a34a',
-        padding: 6,
+        padding: 3,
         backgroundColor:'#dcfce7',
         borderRadius:12
     },
     textStatusRequest:{
-        color:'#16a34a',
-        padding: 6,
-        backgroundColor:'#dcfce7',
+        color:'#EA580C',
+        padding: 3,
+        backgroundColor:'#FFEDD5',
         borderRadius:12
     }
 });

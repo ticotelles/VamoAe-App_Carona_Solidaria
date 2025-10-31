@@ -6,10 +6,16 @@ import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { z } from 'zod';
 import styles from './styles';
 
+// const loginSchema = z.object({
+//   email: z.string().email({ message: "Email inválido" }),
+//   password: z.string().min(4, { message: "Senha deve ter no mínimo 6 caracteres" }),
+// });
+
 const loginSchema = z.object({
-  email: z.string().email({ message: "Email inválido" }),
-  password: z.string().min(4, { message: "Senha deve ter no mínimo 6 caracteres" }),
+  email: z.string(),
+  password: z.string(),
 });
+
 
 export type LoginSchema = z.infer<typeof loginSchema>;
 
