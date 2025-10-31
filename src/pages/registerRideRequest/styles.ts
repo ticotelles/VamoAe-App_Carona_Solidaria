@@ -36,14 +36,19 @@ const styles = StyleSheet.create({
     paddingHorizontal:42,
     borderRadius:8,
     backgroundColor:'#EA9C36',
+    alignItems:'center',
+    marginTop:30
   },
   buttonText:{
-    color:'#081B43',
+    color:'#FFFFFF',
     fontWeight:'bold',
     fontSize:16,
   },
   errorText:{
     color: 'red',
+  },
+  label:{
+    lineHeight:25
   }
 });
 

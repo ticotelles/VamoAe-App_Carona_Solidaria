@@ -38,8 +38,8 @@ export default function RegisterRideRequestPage() {
                     control={control}
                     name="origem"
                     render={({ field, fieldState }) => (
-                        <>
-                            <Text>Origem</Text>
+                        <View >
+                            <Text style={styles.label}>Origem</Text>
                             <TextInput
                                 placeholder="Porteirinha"
                                 style={styles.input}
@@ -51,7 +51,7 @@ export default function RegisterRideRequestPage() {
                                 <Text style={styles.errorText}>{fieldState.error.message}</Text>
                             )}
 
-                        </>
+                        </View>
                     )}
 
                 />
@@ -60,8 +60,8 @@ export default function RegisterRideRequestPage() {
                     control={control}
                     name="destino"
                     render={({ field, fieldState }) => (
-                        <>
-                            <Text>Destino</Text>
+                        <View>
+                            <Text style={styles.label}>Destino</Text>
                             <TextInput
                                 placeholder="Montes Claros"
                                 style={styles.input}
@@ -73,7 +73,7 @@ export default function RegisterRideRequestPage() {
                                 <Text style={styles.errorText}>{fieldState.error.message}</Text>
                             )}
 
-                        </>
+                        </View>
                     )}
 
                 />
@@ -81,8 +81,8 @@ export default function RegisterRideRequestPage() {
                     control={control}
                     name="whatsapp"
                     render={({ field, fieldState }) => (
-                        <>
-                            <Text>Whatsapp</Text>
+                        <View>
+                            <Text style={styles.label}>Whatsapp</Text>
                             <TextInput
                                 placeholder="9999-9999"
                                 style={styles.input}
@@ -94,7 +94,7 @@ export default function RegisterRideRequestPage() {
                                 <Text style={styles.errorText}>{fieldState.error.message}</Text>
                             )}
 
-                        </>
+                        </View>
                     )}
 
                 />
@@ -102,8 +102,8 @@ export default function RegisterRideRequestPage() {
                     control={control}
                     name="data"
                     render={({ field, fieldState }) => (
-                        <>
-                            <Text>Data</Text>
+                        <View>
+                            <Text style={styles.label}>Data</Text>
                             <TextInput
                                 placeholder="ex:20/10/2025"
                                 style={styles.input}
@@ -115,16 +115,17 @@ export default function RegisterRideRequestPage() {
                                 <Text style={styles.errorText}>{fieldState.error.message}</Text>
                             )}
 
-                        </>
+                        </View>
                     )}
 
                 />
                 <Controller
                     control={control}
+                    
                     name="hora"
                     render={({ field, fieldState }) => (
-                        <>
-                            <Text>Hora</Text>
+                        <View>
+                            <Text style={styles.label}>Hora</Text>
                             <TextInput
                                 placeholder="ex: 00:00"
                                 style={styles.input}
@@ -136,7 +137,7 @@ export default function RegisterRideRequestPage() {
                                 <Text style={styles.errorText}>{fieldState.error.message}</Text>
                             )}
 
-                        </>
+                        </View>
                     )}
 
                 />
