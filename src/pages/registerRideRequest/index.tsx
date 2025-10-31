@@ -39,7 +39,7 @@ export default function RegisterRideRequestPage() {
                     name="origem"
                     render={({ field, fieldState }) => (
                         <>
-                        <Text>Origem</Text>
+                            <Text>Origem</Text>
                             <TextInput
                                 placeholder="Porteirinha"
                                 style={styles.input}
@@ -56,12 +56,12 @@ export default function RegisterRideRequestPage() {
 
                 />
 
-               <Controller
+                <Controller
                     control={control}
                     name="destino"
                     render={({ field, fieldState }) => (
                         <>
-                        <Text>Destino</Text>
+                            <Text>Destino</Text>
                             <TextInput
                                 placeholder="Montes Claros"
                                 style={styles.input}
@@ -82,7 +82,7 @@ export default function RegisterRideRequestPage() {
                     name="whatsapp"
                     render={({ field, fieldState }) => (
                         <>
-                        <Text>Whatsapp</Text>
+                            <Text>Whatsapp</Text>
                             <TextInput
                                 placeholder="9999-9999"
                                 style={styles.input}
@@ -103,7 +103,7 @@ export default function RegisterRideRequestPage() {
                     name="data"
                     render={({ field, fieldState }) => (
                         <>
-                        <Text>Data</Text>
+                            <Text>Data</Text>
                             <TextInput
                                 placeholder="ex:20/10/2025"
                                 style={styles.input}
@@ -124,7 +124,7 @@ export default function RegisterRideRequestPage() {
                     name="hora"
                     render={({ field, fieldState }) => (
                         <>
-                        <Text>Hora</Text>
+                            <Text>Hora</Text>
                             <TextInput
                                 placeholder="ex: 00:00"
                                 style={styles.input}
@@ -140,12 +140,12 @@ export default function RegisterRideRequestPage() {
                     )}
 
                 />
+                <TouchableOpacity style={styles.button} onPress={handleSubmit(onSubmit)}>
+                    <Text style={styles.buttonText}>Cadastrar</Text>
+                </TouchableOpacity>
 
             </View>
 
-            <TouchableOpacity style={styles.button} onPress={handleSubmit(onSubmit)}>
-                <Text style={styles.buttonText}>Cadastrar</Text>
-            </TouchableOpacity>
 
 
         </View>

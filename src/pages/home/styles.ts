@@ -65,6 +65,26 @@ const styles = StyleSheet.create({
     dateTextCard:{
         fontSize: 16,
         fontWeight:500
+    },
+    wrapperPrice:{
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        gap: 5,
+        paddingRight:10,
+        // backgroundColor: '#F0FDF4',
+        borderRadius: 12,
+    },
+    textStatusOffer:{
+        color:'#16a34a',
+        padding: 6,
+        backgroundColor:'#dcfce7',
+        borderRadius:12
+    },
+    textStatusRequest:{
+        color:'#16a34a',
+        padding: 6,
+        backgroundColor:'#dcfce7',
+        borderRadius:12
     }
 });
 

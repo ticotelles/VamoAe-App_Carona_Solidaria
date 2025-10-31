@@ -1,5 +1,7 @@
+import AntDesign from '@expo/vector-icons/AntDesign';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+
 import styles from './styles';
 
 
@@ -64,7 +66,13 @@ export default function HomePage() {
                     <View style={styles.cardRide}>
                         <View style={styles.wrapperNamePrice}>
                             <Text style={styles.nameTextCard}>{item.nome}</Text>
+                            <View style={styles.wrapperPrice}>
+                                {/* <AntDesign name="plus" size={18} color="green" style={{borderRadius:100, backgroundColor:'#DCFCE7', padding: 5}}/> */}
+                                <AntDesign name="like" size={24} color="#EA580C"  style={{borderRadius:100, backgroundColor:'#DCFCE7', padding: 5}}/>
+                                <Text style={styles.textStatusOffer}>Oferecendo</Text>
+                            </View>
                             <Text style={styles.priceTextCard}>R$ {item.valor}</Text>
+
                         </View>
 
                         <View style={styles.wrapperOrigemDestino}>

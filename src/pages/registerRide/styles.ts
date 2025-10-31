@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     // paddingTop: 64,
-    // justifyContent: "space-evenly",
+    justifyContent: "space-evenly",
     // alignItems: "center",
     gap: 12,
     backgroundColor:'#F9FAFB'
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   wrapperform:{
     padding:16,
     // justifyContent:'space-between',
-    gap:12,
+    gap:18,
     height:'50%',
     width:'100%',
   },
