@@ -19,9 +19,12 @@ Uma solução sustentável para mobilidade urbana colaborativa, aplicativo de Ca
 **Back-end:** Node, Express, PostgreSQL, Prisma ORM
 
 
-## Tela Home
+## Telas em desenvolvimento
 
-Tela principal onde mostra todas as caronas disponiveis
-
-<img src="assets/imagens/home.png" alt="Designer das Telas">
+<p align="center">
+ 
+  <img src="./assets/images/login.png" width="200">
+    <img src="./assets/images/home.png" width="200">
+ 
+</p>
 
