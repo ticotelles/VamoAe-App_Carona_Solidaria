@@ -24,7 +24,8 @@ Uma solução sustentável para mobilidade urbana colaborativa, aplicativo de Ca
 <p align="center">
  
   <img src="./assets/images/login.png" width="200">
-    <img src="./assets/images/home.png" width="200">
+  <img src="./assets/images/home.png" width="200">
+  <img src="./assets/images/solicitar carona.png" width="200">
  
 </p>
 
