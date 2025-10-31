@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 24,
     fontWeight: "bold",
+    color:'#EA9C36'
   },
   input: {
     borderColor:"#BDBDBD",
@@ -48,7 +49,8 @@ const styles = StyleSheet.create({
     color: 'red',
   },
   label:{
-    lineHeight:25
+    lineHeight:25,
+    color:'#EA9C36'
   }
 });
 

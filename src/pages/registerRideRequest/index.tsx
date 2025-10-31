@@ -41,7 +41,7 @@ export default function RegisterRideRequestPage() {
                         <View >
                             <Text style={styles.label}>Origem</Text>
                             <TextInput
-                                placeholder="Porteirinha"
+                                placeholder="ex: Porteirinha"
                                 style={styles.input}
                                 onChangeText={field.onChange}
                                 value={field.value}
@@ -63,7 +63,7 @@ export default function RegisterRideRequestPage() {
                         <View>
                             <Text style={styles.label}>Destino</Text>
                             <TextInput
-                                placeholder="Montes Claros"
+                                placeholder="ex: Montes Claros"
                                 style={styles.input}
                                 onChangeText={field.onChange}
                                 value={field.value}
@@ -84,7 +84,7 @@ export default function RegisterRideRequestPage() {
                         <View>
                             <Text style={styles.label}>Whatsapp</Text>
                             <TextInput
-                                placeholder="9999-9999"
+                                placeholder="ex: (38) 9 9999-9999"
                                 style={styles.input}
                                 onChangeText={field.onChange}
                                 value={field.value}
@@ -105,7 +105,7 @@ export default function RegisterRideRequestPage() {
                         <View>
                             <Text style={styles.label}>Data</Text>
                             <TextInput
-                                placeholder="ex:20/10/2025"
+                                placeholder="ex: 20/10/2025"
                                 style={styles.input}
                                 onChangeText={field.onChange}
                                 value={field.value}
@@ -127,7 +127,7 @@ export default function RegisterRideRequestPage() {
                         <View>
                             <Text style={styles.label}>Hora</Text>
                             <TextInput
-                                placeholder="ex: 00:00"
+                                placeholder="ex: 13:30"
                                 style={styles.input}
                                 onChangeText={field.onChange}
                                 value={field.value}
