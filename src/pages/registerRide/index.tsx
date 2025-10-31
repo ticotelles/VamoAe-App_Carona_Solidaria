@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigation } from '@react-navigation/native';
 import React from "react";
 import { Controller, useForm } from 'react-hook-form';
-import { KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { z } from 'zod';
 import styles from "./styles";
 
@@ -29,9 +29,7 @@ export default function RegisterRidePage() {
     };
 
     return (
-        <KeyboardAvoidingView style={styles.container}
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        >
+        <View style={styles.container}>
             <Text style={styles.text}>Cadastro de Carona</Text>
 
             <View style={styles.wrapperform}>
@@ -39,9 +37,10 @@ export default function RegisterRidePage() {
                     control={control}
                     name="origem"
                     render={({ field, fieldState }) => (
-                        <>
+                        <View>
+                            <Text style={styles.label}>Origem</Text>
                             <TextInput
-                                placeholder="Origem"
+                                placeholder="ex: Montes Claros"
                                 style={styles.input}
                                 onChangeText={field.onChange}
                                 value={field.value}
@@ -50,7 +49,7 @@ export default function RegisterRidePage() {
                             {fieldState.error?.message && (
                                 <Text style={styles.errorText}>{fieldState.error.message}</Text>
                             )}
-                        </>
+                        </View>
                     )}
                 />
 
@@ -58,9 +57,10 @@ export default function RegisterRidePage() {
                     control={control}
                     name="destino"
                     render={({ field, fieldState }) => (
-                        <>
+                        <View>
+                            <Text style={styles.label}>Destino</Text>
                             <TextInput
-                                placeholder="Destino"
+                                placeholder="ex: Belo Horizonte"
                                 style={styles.input}
                                 onChangeText={field.onChange}
                                 value={field.value}
@@ -69,7 +69,7 @@ export default function RegisterRidePage() {
                             {fieldState.error?.message && (
                                 <Text style={styles.errorText}>{fieldState.error.message}</Text>
                             )}
-                        </>
+                        </View>
                     )}
                 />
 
@@ -77,9 +77,10 @@ export default function RegisterRidePage() {
                     control={control}
                     name="whatsapp"
                     render={({ field, fieldState }) => (
-                        <>
+                        <View>
+                            <Text style={styles.label}>Whatsapp</Text>
                             <TextInput
-                                placeholder="Whatsapp"
+                                placeholder="ex: (31) 99999-9999"
                                 style={styles.input}
                                 onChangeText={field.onChange}
                                 value={field.value}
@@ -89,7 +90,7 @@ export default function RegisterRidePage() {
                             {fieldState.error?.message && (
                                 <Text style={styles.errorText}>{fieldState.error.message}</Text>
                             )}
-                        </>
+                        </View>
                     )}
                 />
 
@@ -97,9 +98,10 @@ export default function RegisterRidePage() {
                     control={control}
                     name="data"
                     render={({ field, fieldState }) => (
-                        <>
+                        <View>
+                            <Text style={styles.label}>Data</Text>
                             <TextInput
-                                placeholder="Data - DD/MM/AAAA"
+                                placeholder="ex: 31/12/2023"
                                 style={styles.input}
                                 onChangeText={field.onChange}
                                 value={field.value}
@@ -109,7 +111,7 @@ export default function RegisterRidePage() {
                             {fieldState.error?.message && (
                                 <Text style={styles.errorText}>{fieldState.error.message}</Text>
                             )}
-                        </>
+                        </View>
                     )}
                 />
 
@@ -117,9 +119,10 @@ export default function RegisterRidePage() {
                     control={control}
                     name="hora"
                     render={({ field, fieldState }) => (
-                        <>
+                        <View>
+                            <Text style={styles.label}>Hora</Text>
                             <TextInput
-                                placeholder="Hora - HH:MM"
+                                placeholder="ex: 14:30"
                                 style={styles.input}
                                 onChangeText={field.onChange}
                                 value={field.value}
@@ -129,7 +132,7 @@ export default function RegisterRidePage() {
                             {fieldState.error?.message && (
                                 <Text style={styles.errorText}>{fieldState.error.message}</Text>
                             )}
-                        </>
+                        </View>
                     )}
                 />
 
@@ -137,9 +140,10 @@ export default function RegisterRidePage() {
                     control={control}
                     name="valor"
                     render={({ field, fieldState }) => (
-                        <>
+                        <View>
+                            <Text style={styles.label}>Valor</Text>
                             <TextInput
-                                placeholder="Valor da Carona"
+                                placeholder="ex: 40"
                                 style={styles.input}
                                 onChangeText={field.onChange}
                                 value={field.value}
@@ -148,14 +152,15 @@ export default function RegisterRidePage() {
                             {fieldState.error?.message && (
                                 <Text style={styles.errorText}>{fieldState.error.message}</Text>
                             )}
-                        </>
+                        </View>
                     )}
                 />
+
+                <TouchableOpacity style={styles.button} onPress={handleSubmit(onSubmit)}>
+                    <Text style={styles.buttonText}>Cadastrar</Text>
+                </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.button} onPress={handleSubmit(onSubmit)}>
-                <Text style={styles.buttonText}>Cadastrar</Text>
-            </TouchableOpacity>
-        </KeyboardAvoidingView>
+        </View>
     );
 }

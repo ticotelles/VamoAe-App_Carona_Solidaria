@@ -3,16 +3,18 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
  container: {
     flex: 1,
+    marginTop: 16,
     padding: 16,
-    // paddingTop: 64,
     justifyContent: "space-evenly",
-    // alignItems: "center",
+    alignItems: "center",
     gap: 12,
     backgroundColor:'#F9FAFB'
   },
   text: {
     fontSize: 24,
     fontWeight: "bold",
+    color:'#EA9C36'
+    // alignItems:'center'
   },
   input: {
     borderColor:"#BDBDBD",
@@ -21,36 +23,35 @@ const styles = StyleSheet.create({
     backgroundColor:'#FFFFFF',
     padding:15,
     paddingTop:18,
-    width:'100%',
-    // marginTop:8,
   },
   wrapperform:{
     padding:16,
     // justifyContent:'space-between',
-    gap:18,
-    height:'50%',
+    // backgroundColor:'red',
+    gap:12,
+    // height:'50%',
+    flex:1,
     width:'100%',
   },
   button:{
     paddingVertical:12,
-    // paddingHorizontal:42,
+    paddingHorizontal:42,
     borderRadius:8,
     backgroundColor:'#EA9C36',
-
-  
+    alignItems:'center',
+    marginTop:30
   },
   buttonText:{
-    color:'#081B43',
+    color:'#FFFFFF',
     fontWeight:'bold',
     fontSize:16,
-    textAlign:'center'
-  
   },
     errorText:{
     color: 'red',
   },
   label:{
-    marginTop:8,
+    lineHeight:25,
+    color:'#EA9C36'
   }
 });
 

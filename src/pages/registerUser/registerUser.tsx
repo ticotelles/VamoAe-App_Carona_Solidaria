@@ -33,118 +33,123 @@ export default function RegisterUserPage() {
 
   const navigation = useNavigation<any>();
 
-  // ✅ Corrigido: `data` vem direto, não dentro de { data }
+
   const onSubmit = (data: RegisterUserSchema) => {
     console.log('Dados do formulário:', data);
-    // aqui você pode chamar a API ou navegar para outra tela
-     navigation.navigate('Home');
+
+    navigation.navigate('Home');
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Cadastro de Usuário</Text>
+      {/* <Text style={styles.text}>Cadastro de Usuário</Text> */}
 
-      <Controller
-        control={control}
-        name="fullname"
-        render={({ field, fieldState }) => (
-          <>
-            <Text style={styles.label}>Nome completo</Text>
-            <TextInput
-              placeholder="Nome"
-              style={styles.input}
-              onChangeText={field.onChange}
-              value={field.value}
-            />
-            {fieldState.error?.message && (
-              <Text style={styles.errorText}>{fieldState.error.message}</Text>
-            )}
-          </>
-        )}
-      />
+      <View style={styles.wrapperform}>
 
-      <Controller
-        control={control}
-        name="email"
-        render={({ field, fieldState }) => (
-          <>
-            <Text>Email</Text>
-            <TextInput
-              placeholder="teste@gmail.com"
-              autoCapitalize="none"
-              style={styles.input}
-              onChangeText={field.onChange}
-              value={field.value}
-            />
-            {fieldState.error?.message && (
-              <Text style={styles.errorText}>{fieldState.error.message}</Text>
-            )}
-          </>
-        )}
-      />
 
-      <Controller
-        control={control}
-        name="whatsapp"
-        render={({ field, fieldState }) => (
-          <>
-            <Text>Whatsapp</Text>
-            <TextInput
-              placeholder="9999-9999"
-              style={styles.input}
-              onChangeText={field.onChange}
-              value={field.value}
-            />
-            {fieldState.error?.message && (
-              <Text style={styles.errorText}>{fieldState.error.message}</Text>
-            )}
-          </>
-        )}
-      />
+        <Controller
+          control={control}
+          name="fullname"
+          render={({ field, fieldState }) => (
+            <View>
+              <Text style={styles.label}>Nome completo</Text>
+              <TextInput
+                placeholder="Nome"
+                style={styles.input}
+                onChangeText={field.onChange}
+                value={field.value}
+              />
+              {fieldState.error?.message && (
+                <Text style={styles.errorText}>{fieldState.error.message}</Text>
+              )}
+            </View>
+          )}
+        />
 
-      <Controller
-        control={control}
-        name="password"
-        render={({ field, fieldState }) => (
-          <>
-            <Text>Senha</Text>
-            <TextInput
-              placeholder="******"
-              secureTextEntry
-              style={styles.input}
-              onChangeText={field.onChange}
-              value={field.value}
-            />
-            {fieldState.error?.message && (
-              <Text style={styles.errorText}>{fieldState.error.message}</Text>
-            )}
-          </>
-        )}
-      />
+        <Controller
+          control={control}
+          name="email"
+          render={({ field, fieldState }) => (
+            <View>
+              <Text style={styles.label}>Email</Text>
+              <TextInput
+                placeholder="teste@gmail.com"
+                autoCapitalize="none"
+                style={styles.input}
+                onChangeText={field.onChange}
+                value={field.value}
+              />
+              {fieldState.error?.message && (
+                <Text style={styles.errorText}>{fieldState.error.message}</Text>
+              )}
+            </View>
+          )}
+        />
 
-      <Controller
-        control={control}
-        name="confirmPassword"
-        render={({ field, fieldState }) => (
-          <>
-            <Text>Confirmar Senha</Text>
-            <TextInput
-              placeholder="******"
-              secureTextEntry
-              style={styles.input}
-              onChangeText={field.onChange}
-              value={field.value}
-            />
-            {fieldState.error?.message && (
-              <Text style={styles.errorText}>{fieldState.error.message}</Text>
-            )}
-          </>
-        )}
-      />
+        <Controller
+          control={control}
+          name="whatsapp"
+          render={({ field, fieldState }) => (
+            <View>
+              <Text style={styles.label}>Whatsapp</Text>
+              <TextInput
+                placeholder="9999-9999"
+                style={styles.input}
+                onChangeText={field.onChange}
+                value={field.value}
+              />
+              {fieldState.error?.message && (
+                <Text style={styles.errorText}>{fieldState.error.message}</Text>
+              )}
+            </View>
+          )}
+        />
 
-      <TouchableOpacity style={styles.button} onPress={handleSubmit(onSubmit)}>
-        <Text style={styles.buttonText}>Cadastrar</Text>
-      </TouchableOpacity>
+        <Controller
+          control={control}
+          name="password"
+          render={({ field, fieldState }) => (
+            <View>
+              <Text style={styles.label}>Senha</Text>
+              <TextInput
+                placeholder="******"
+                secureTextEntry
+                style={styles.input}
+                onChangeText={field.onChange}
+                value={field.value}
+              />
+              {fieldState.error?.message && (
+                <Text style={styles.errorText}>{fieldState.error.message}</Text>
+              )}
+            </View>
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="confirmPassword"
+          render={({ field, fieldState }) => (
+            <View>
+              <Text style={styles.label}>Confirmar Senha</Text>
+              <TextInput
+                placeholder="******"
+                secureTextEntry
+                style={styles.input}
+                onChangeText={field.onChange}
+                value={field.value}
+              />
+              {fieldState.error?.message && (
+                <Text style={styles.errorText}>{fieldState.error.message}</Text>
+              )}
+            </View>
+          )}
+        />
+
+        <TouchableOpacity style={styles.button} onPress={handleSubmit(onSubmit)}>
+          <Text style={styles.buttonText}>Cadastrar</Text>
+        </TouchableOpacity>
+
+      </View>
     </View>
   );
 }

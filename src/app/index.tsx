@@ -21,7 +21,9 @@ export default function Index() {
             <Stack.Screen
                 name="RegisterUser"
                 component={RegisterUserPage}
-                options={{ title: '' }}
+                options={{ title: 'Cadastro de Usuário',
+                    headerTitleStyle: { color: '#EA9C36'}
+                 }}
             />
         </Stack.Navigator>
     );
