@@ -1,11 +1,11 @@
 import { PrismaClient } from './generated/prisma/index.js';
 
 
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
-async function getUsers(){
-    const user = await prisma.user.findMany();
-    console.log(user)
+async function getRide(){
+    const ride = await prisma.ride.findMany();
+    console.log(ride)
 }
 
-getUsers();
+getRide();
