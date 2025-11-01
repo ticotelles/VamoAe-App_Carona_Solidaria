@@ -25,13 +25,13 @@ app.get('/ride', async (req, res) => {
 });
 
 
-app.post('/ride', (req, res) => {
+app.post('/createRide', async (req, res) => {
   try {
     const data = req.body;
- 
-    prisma.ride.create({ data });
+
+    await prisma.createRide.create({ data });
     res.status(201).json({ message: 'Ride created successfully' });
-       console.log(data);
+       console.log('aaaa',data);
   } catch (error) {
     console.error('Error creating ride:', error);
     res.status(500).json({ error: 'Internal Server Error' });

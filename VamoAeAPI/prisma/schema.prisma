@@ -20,6 +20,7 @@ model CreateRide {
   id          String   @id @default(uuid())
   origin      String
   destination String
+  whatsapp String
   value Int
   date        DateTime
   time        String
