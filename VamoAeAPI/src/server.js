@@ -11,10 +11,10 @@ app.get('/users', (req, res) => {
   res.send('Hello, World!');
 });
 
-app.get('/ride', async (req, res) => {
+app.get('/createRide', async (req, res) => {
   try {
     
-  const data = await prisma.ride.findMany();
+  const data = await prisma.createRide.findMany();
   res.json(data);
     
   } catch (error) {
