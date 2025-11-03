@@ -16,13 +16,15 @@ model User {
   senha    String
 }
 
-model CreateRide {
+model Rides {
   id          String   @id @default(uuid())
   origin      String
   destination String
   whatsapp String
-  value Int
-  date        DateTime
+  value Int?
+  date        String
   time        String
   isRideRequest Boolean @default(false)
 }
+
+

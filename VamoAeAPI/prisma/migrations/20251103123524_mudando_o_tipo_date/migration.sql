@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Rides" ALTER COLUMN "date" SET DATA TYPE TEXT;

@@ -61,29 +61,29 @@ import styles from './styles';
 //     },
 // ]
 
-type Ride = {
-  id: string;
-  origin: string;
-  destination: string;
-  whatsapp: string;
-  value: number;
-  date: string;
-  time: string;
-  isRideRequest: boolean;
+type Rides = {
+    id: string;
+    origin: string;
+    destination: string;
+    whatsapp: string;
+    value: number;
+    date: string;
+    time: string;
+    isRideRequest: boolean;
 };
 
 
 
 
 export default function HomePage() {
-    const [rides, setRides] = useState<Ride[]>([]);
+    const [rides, setRides] = useState<Rides[]>([]);
     // const rides = prisma.createRide.findMany();
 
     useEffect(() => {
 
         const fetchRides = async () => {
             try {
-                const response = await axios.get<Ride[]>('http://192.168.56.1:3000/createRide');
+                const response = await axios.get<Rides[]>('http://192.168.56.1:3000/home');
                 setRides(response.data)
             } catch (error) {
                 console.error(error);
@@ -119,8 +119,8 @@ export default function HomePage() {
                             )}
 
 
+                            <Text style={styles.priceTextCard}>R$ {item.value ? item.value : '-'} </Text>
 
-                            <Text style={styles.priceTextCard}>R$ {item.value}</Text>
 
                         </View>
 
