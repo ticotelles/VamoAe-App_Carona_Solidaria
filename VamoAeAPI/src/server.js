@@ -31,27 +31,34 @@ app.get('/home', async (req, res) => {
 
 app.post('/create-ride', async (req, res) => {
   try {
+  
     const { origin, destination, whatsapp, date, time, value } = req.body;
 
-    await prisma.rides.create({
+    const newRide = await prisma.rides.create({
       data: {
         origin,
         destination,
         whatsapp,
         date,
         time,
-        value,
+        value: value ? parseInt(value) : null, 
         isRideRequest: false,
       },
     });
-    res.status(201).json({ message: 'Carona cadastrada com sucesso!' });
-    console.log('aaaa', data);
+
+   
+    res.status(201).json({ message: 'Carona cadastrada com sucesso!', newRide });
+    console.log(' Carona criada:', newRide);
+
   } catch (error) {
-    console.error('Error creating ride:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error(' Error creating ride:', error);
+  
+    if (!res.headersSent) {
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
   }
-}
-);
+});
+
 
 app.post('/create-request-ride', async (req, res) => {
   try {
