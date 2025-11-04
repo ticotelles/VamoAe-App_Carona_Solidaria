@@ -64,20 +64,22 @@ app.post('/create-request-ride', async (req, res) => {
   try {
     const { origin, destination, whatsapp, date, time } = req.body;
 
-    await prisma.rides.create({
+      
+   const newRequestRide = await prisma.rides.create({
       data: {
         origin,
         destination,
         whatsapp,
         date,
+        value: null,
         time,
         isRideRequest: true
       }
 
     });
 
-    res.status(201).json({ message: "solicitação de carona criada com sucesso!" })
-    console.log(data)
+    res.status(201).json({ message: "solicitação de carona criada com sucesso!", newRequestRide })
+    console.log('create-request-ride',newRequestRide)
 
   } catch (error) {
     console.error('Error creating ride:', error);

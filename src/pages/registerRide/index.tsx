@@ -42,7 +42,7 @@ export default function RegisterRidePage() {
         } catch (error) {
             console.error('❌ Erro ao criar carona', error);
         }
-        navigation.navigate('Home');
+       
     };
 
     return (

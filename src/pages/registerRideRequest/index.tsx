@@ -1,16 +1,19 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 import { Controller, useForm } from 'react-hook-form';
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { z } from 'zod';
 import styles from "./styles";
 
+
+
 const registerRideRequestSchema = z.object({
-    origem: z.string().min(2, { message: "Origem deve ter pelo menos 2 caracteres" }),
-    destino: z.string().min(2, { message: "Destino deve ter pelo menos 2 caracteres" }),
+    origin: z.string().min(2, { message: "Origem deve ter pelo menos 2 caracteres" }),
+    destination: z.string().min(2, { message: "Destino deve ter pelo menos 2 caracteres" }),
     whatsapp: z.string().min(10, { message: "Whatsapp deve ter pelo menos 10 dígitos" }),
-    data: z.string().min(10, { message: "Data deve estar no formato DD/MM/AAAA" }),
-    hora: z.string().min(5, { message: "Hora deve estar no formato HH:MM" }),
+    date: z.string().min(10, { message: "Data deve estar no formato DD/MM/AAAA" }),
+    time: z.string().min(5, { message: "Hora deve estar no formato HH:MM" }),
 });
 
 type RegisterRideRequestSchema = z.infer<typeof registerRideRequestSchema>;
@@ -21,9 +24,25 @@ export default function RegisterRideRequestPage() {
         resolver: zodResolver(registerRideRequestSchema),
     })
 
-    const onSubmit = (data: RegisterRideRequestSchema) => {
-        console.log('Dados da solicitação de carona:', data);
-        navigation.navigate('Home');
+    const onSubmit = async (data: RegisterRideRequestSchema) => {
+        try {
+            console.log('📦 Dados do request ride:', data);
+
+            const response = await axios.post(
+                'http://192.168.56.1:3000/create-request-ride',
+                data, {
+                headers: { 'Content-Type': 'application/json' },
+            }
+            )
+
+            console.log('✅ Carona criada com sucesso', response.data);
+            navigation.navigate('Home');
+        } catch (error) {
+            console.error('❌ Erro ao criar carona', error);
+        }
+
+
+
     }
 
     return (
@@ -36,7 +55,7 @@ export default function RegisterRideRequestPage() {
 
                 <Controller
                     control={control}
-                    name="origem"
+                    name="origin"
                     render={({ field, fieldState }) => (
                         <View >
                             <Text style={styles.label}>Origem</Text>
@@ -58,7 +77,7 @@ export default function RegisterRideRequestPage() {
 
                 <Controller
                     control={control}
-                    name="destino"
+                    name="destination"
                     render={({ field, fieldState }) => (
                         <View>
                             <Text style={styles.label}>Destino</Text>
@@ -100,7 +119,7 @@ export default function RegisterRideRequestPage() {
                 />
                 <Controller
                     control={control}
-                    name="data"
+                    name="date"
                     render={({ field, fieldState }) => (
                         <View>
                             <Text style={styles.label}>Data</Text>
@@ -121,8 +140,8 @@ export default function RegisterRideRequestPage() {
                 />
                 <Controller
                     control={control}
-                    
-                    name="hora"
+
+                    name="time"
                     render={({ field, fieldState }) => (
                         <View>
                             <Text style={styles.label}>Hora</Text>

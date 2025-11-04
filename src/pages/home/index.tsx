@@ -1,65 +1,14 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { useEffect, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback, useState } from 'react';
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 
 import axios from 'axios';
 import styles from './styles';
 
 
-// const Carona = [
-//     {
-//         nome: 'Arthur Telles',
-//         origem: 'Porteirinha',
-//         destino: 'Montes Claros',
-//         hora: '13:00',
-//         data: '20/10/2025',
-//         valor: " - ",
-//         contato: '99999-9999',
-//         isRideRequest: false,
 
-//     },
-//     {
-//         nome: 'Arthur Telles',
-//         origem: 'Porteirinha',
-//         destino: 'Montes Claros',
-//         hora: '13:00',
-//         data: '20/10/2025',
-//         valor: 45,
-//         contato: '99999-9999',
-//         isRideRequest: true
-//     },
-//     {
-//         nome: 'Arthur Telles',
-//         origem: 'Porteirinha',
-//         destino: 'Montes Claros',
-//         hora: '13:00',
-//         data: '20/10/2025',
-//         valor: " - ",
-//         contato: '99999-9999',
-//         isRideRequest: false
-//     },
-//     {
-//         nome: 'Arthur Telles',
-//         origem: 'Porteirinha',
-//         destino: 'Montes Claros',
-//         hora: '13:00',
-//         data: '20/10/2025',
-//         valor: " - ",
-//         contato: '99999-9999',
-//         isRideRequest: false
-//     },
-//     {
-//         nome: 'Arthur Telles',
-//         origem: 'Porteirinha',
-//         destino: 'Montes Claros',
-//         hora: '13:00',
-//         data: '20/10/2025',
-//         valor: 45,
-//         contato: '99999-9999',
-//         isRideRequest: true
-//     },
-// ]
 
 type Rides = {
     id: string;
@@ -77,9 +26,8 @@ type Rides = {
 
 export default function HomePage() {
     const [rides, setRides] = useState<Rides[]>([]);
-    // const rides = prisma.createRide.findMany();
 
-    useEffect(() => {
+ 
 
         const fetchRides = async () => {
             try {
@@ -91,7 +39,13 @@ export default function HomePage() {
         }
         fetchRides();
 
-    }, []);
+  
+
+    useFocusEffect(
+        useCallback(() => {
+            fetchRides();
+        }, [])
+    );
 
     return (
         <View style={styles.container}>
