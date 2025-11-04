@@ -27,19 +27,19 @@ type Rides = {
 export default function HomePage() {
     const [rides, setRides] = useState<Rides[]>([]);
 
- 
 
-        const fetchRides = async () => {
-            try {
-                const response = await axios.get<Rides[]>('http://192.168.56.1:3000/home');
-                setRides(response.data)
-            } catch (error) {
-                console.error(error);
-            }
+
+    const fetchRides = async () => {
+        try {
+            const response = await axios.get<Rides[]>('http://192.168.56.1:3000/home');
+            setRides(response.data)
+        } catch (error) {
+            console.error(error);
         }
-        fetchRides();
+    }
+    fetchRides();
 
-  
+
 
     useFocusEffect(
         useCallback(() => {
@@ -59,21 +59,22 @@ export default function HomePage() {
                             <Text style={styles.nameTextCard}>nome teste</Text>
 
                             {item.isRideRequest ? (
+
                                 <View style={styles.wrapperPrice}>
-                                    {/* <AntDesign name="plus" size={18} color="green" style={{borderRadius:100, backgroundColor:'#DCFCE7', padding: 5}}/> */}
-                                    <AntDesign name="plus" size={15} color="green" style={{ borderRadius: 100, backgroundColor: '#DCFCE7', padding: 5 }} />
-                                    <Text style={styles.textStatusOffer}>Oferecendo</Text>
+
+                                    <AntDesign name="like" size={15} color="#EA580C" style={{ borderRadius: 100, backgroundColor: '#FFEDD5', padding: 5 }} />
+                                    <Text style={styles.textStatusRequest}>Pedindo</Text>
                                 </View>
                             ) : (
                                 <View style={styles.wrapperPrice}>
-                                    {/* <AntDesign name="plus" size={18} color="green" style={{borderRadius:100, backgroundColor:'#DCFCE7', padding: 5}}/> */}
-                                    <AntDesign name="like" size={15} color="#EA580C" style={{ borderRadius: 100, backgroundColor: '#FFEDD5', padding: 5 }} />
-                                    <Text style={styles.textStatusRequest}>Pedindo</Text>
+
+                                    <AntDesign name="plus" size={15} color="green" style={{ borderRadius: 100, backgroundColor: '#DCFCE7', padding: 5 }} />
+                                    <Text style={styles.textStatusOffer}>Oferecendo</Text>
                                 </View>
                             )}
 
 
-                            <Text style={styles.priceTextCard}>R$ {item.value ? item.value : '-'} </Text>
+                            <Text style={styles.priceTextCard}>R$ {!item.value ? '-' : item.value} </Text>
 
 
                         </View>
