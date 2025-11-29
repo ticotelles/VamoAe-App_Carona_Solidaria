@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
@@ -34,10 +35,26 @@ export default function RegisterUserPage() {
   const navigation = useNavigation<any>();
 
 
-  const onSubmit = (data: RegisterUserSchema) => {
+  const onSubmit = async (data: RegisterUserSchema) => {
+
+    try {
+      const response = await axios.post('http://192.168.56.1:3000/create-user', 
+        data, // envia o body pro backend
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                }
+
+      );
+      // console.log('✅ Usuário criado com sucesso', response.data);
+      navigation.navigate('Home');
+      
+    } catch (error) {
+      console.error('error ao criar usuário', error)
+      
+    }
     console.log('Dados do formulário:', data);
 
-    navigation.navigate('Home');
+   
   };
 
   return (

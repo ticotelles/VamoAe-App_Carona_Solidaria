@@ -13,7 +13,7 @@ model User {
   fullname String
   email    String
   whatsapp String
-  senha    String
+  password    String
 }
 
 model Rides {

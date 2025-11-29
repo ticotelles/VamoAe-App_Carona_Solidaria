@@ -1,9 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { z } from 'zod';
+import { AuthContext } from '../../contexts/AuthContext';
 import styles from './styles';
 
 // const loginSchema = z.object({
@@ -25,9 +26,21 @@ export default function LoginPage() {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = (data: LoginSchema) => {
-    console.log('dados login:', data);
-    navigation.navigate('Home');
+  const [apiError, setApiError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const { signIn } = useContext(AuthContext);
+
+  const onSubmit = async (data: LoginSchema) => {
+    setApiError(null);
+    setLoading(true);
+    try {
+      await signIn(data.email, data.password);
+      setLoading(false);
+      navigation.navigate('Home');
+    } catch (err: any) {
+      setApiError(err?.message || 'Erro ao autenticar');
+      setLoading(false);
+    }
   };
 
 
@@ -79,8 +92,10 @@ export default function LoginPage() {
           
           />
           <TouchableOpacity style={styles.buttonLogin} onPress={handleSubmit(onSubmit)}>
-            <Text>Entrar</Text>
+            {loading ? <ActivityIndicator color="#000" /> : <Text>Entrar</Text>}
           </TouchableOpacity>
+
+          {apiError ? <Text style={styles.errorText}>{apiError}</Text> : null}
 
           <View style={styles.wrapperCadastro}>
             <Text style={styles.textNaoCadastro} onPress={() => navigation.navigate('Home')}>Não possui cadastro?</Text>

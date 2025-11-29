@@ -1,9 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigation } from '@react-navigation/native';
-import axios from 'axios';
 import { Controller, useForm } from 'react-hook-form';
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { z } from 'zod';
+import { fetchWithAuth } from '../../lib/api';
 import styles from "./styles";
 
 
@@ -28,14 +28,18 @@ export default function RegisterRideRequestPage() {
         try {
             console.log('📦 Dados do request ride:', data);
 
-            const response = await axios.post(
-                'http://192.168.56.1:3000/create-request-ride',
-                data, {
+            const resp = await fetchWithAuth('/create-request-ride', {
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-            }
-            )
+                body: JSON.stringify(data),
+            });
 
-            console.log('✅ Carona criada com sucesso', response.data);
+            if (!resp.ok) {
+                const err = await resp.json().catch(() => ({}));
+                console.error('❌ Erro ao criar request ride', err);
+                return;
+            }
+
             navigation.navigate('Home');
         } catch (error) {
             console.error('❌ Erro ao criar carona', error);

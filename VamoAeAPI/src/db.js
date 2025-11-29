@@ -3,9 +3,9 @@ import { PrismaClient } from './generated/prisma/index.js';
 
 export const prisma = new PrismaClient();
 
-async function getRide(){
-    const createRide = await prisma.rides.findMany();
-    console.log(createRide)
-}
+// async function getRide(){
+//     const createRide = await prisma.rides.findMany();
+//     console.log(createRide)
+// }
 
-getRide();
+// getRide();

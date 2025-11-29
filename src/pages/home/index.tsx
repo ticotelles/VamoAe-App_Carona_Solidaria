@@ -4,7 +4,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import { useCallback, useState } from 'react';
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 
-import axios from 'axios';
+import { fetchWithAuth } from '../../lib/api';
 import styles from './styles';
 
 
@@ -19,6 +19,7 @@ type Rides = {
     date: string;
     time: string;
     isRideRequest: boolean;
+    user?: { id: number; fullname: string } | null;
 };
 
 
@@ -31,13 +32,19 @@ export default function HomePage() {
 
     const fetchRides = async () => {
         try {
-            const response = await axios.get<Rides[]>('http://192.168.56.1:3000/home');
-            setRides(response.data)
+            const resp = await fetchWithAuth('/home');
+            if (!resp.ok) {
+                const err = await resp.json().catch(() => ({}));
+                console.error('Erro ao buscar caronas', err);
+                return;
+            }
+            const data = await resp.json();
+            setRides(data);
+            console.log('Rides fetched successfully:', data);
         } catch (error) {
-            console.error(error);
+            console.error('error aqui',error);
         }
     }
-    fetchRides();
 
 
 
@@ -56,7 +63,7 @@ export default function HomePage() {
                 renderItem={({ item }) => (
                     <View style={styles.cardRide}>
                         <View style={styles.wrapperNamePrice}>
-                            <Text style={styles.nameTextCard}>nome teste</Text>
+                            <Text style={styles.nameTextCard}>{item.user?.fullname ?? 'Nome desconhecido'}</Text>
 
                             {item.isRideRequest ? (
 
