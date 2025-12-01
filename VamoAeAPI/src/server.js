@@ -103,10 +103,9 @@ app.get('/home', authenticateToken, async (req, res) => {
     // const response = await axios.get('http://localhost:3000/rides');
     // retornar caronas incluindo o usuário que criou cada uma
     const data = await prisma.rides.findMany({
-      // include: {
-      //   user: { select: { id: true, fullname: true, whatsapp: true } }
-      // },
-      // orderBy: { createdAt: 'desc' }
+      include: {
+        user: { select: { id: true, fullname: true, whatsapp: true } }
+      }
     });
     res.status(200).json(data);
     console.log('caronas retornadas:', data);
@@ -123,7 +122,7 @@ app.post('/create-ride', authenticateToken, async (req, res) => {
   try {
 
     const { origin, destination, whatsapp, date, time, value } = req.body;
-    const userId = req.user && req.user.id ? Number(req.user.id) : undefined;
+    const userId = req.user && req.user.id ? req.user.id : undefined;
 
     const newRide = await prisma.rides.create({
       data: {
@@ -134,10 +133,11 @@ app.post('/create-ride', authenticateToken, async (req, res) => {
         time,
         value: value ? parseInt(value) : null,
         isRideRequest: false,
-      //   userId: userId,
-      // },
-      // include: {
-      //   user: { select: { id: true, fullname: true } }
+        userId: userId,
+        //  connect: { id: userId }
+      },
+      include: {
+        user: { select: { id: true, fullname: true } }
       }
     });
 
@@ -159,6 +159,8 @@ app.post('/create-request-ride', authenticateToken, async (req, res) => {
     const { origin, destination, whatsapp, date, time } = req.body;
 
 
+    const userId = req.user && req.user.id ? req.user.id : undefined;
+
     const newRequestRide = await prisma.rides.create({
       data: {
         origin,
@@ -167,7 +169,11 @@ app.post('/create-request-ride', authenticateToken, async (req, res) => {
         date,
         value: null,
         time,
-        isRideRequest: true
+        isRideRequest: true,
+        userId: userId
+      },
+      include: {
+        user: { select: { id: true, fullname: true } }
       }
 
     });

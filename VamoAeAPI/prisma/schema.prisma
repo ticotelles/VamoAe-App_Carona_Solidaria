@@ -14,6 +14,8 @@ model User {
   email    String
   whatsapp String
   password    String
+
+   rides    Rides[]
 }
 
 model Rides {
@@ -25,6 +27,9 @@ model Rides {
   date        String
   time        String
   isRideRequest Boolean @default(false)
+
+  userId      String                      // <= FK
+  user        User     @relation(fields: [userId], references: [id])
 }
 
 

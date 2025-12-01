@@ -56,6 +56,9 @@ export default function HomePage() {
 
     return (
         <View style={styles.container}>
+            <View>
+                <Text >Logout</Text>
+            </View>
 
             <FlatList
                 data={rides}
