@@ -1,11 +1,15 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useFocusEffect } from '@react-navigation/native';
-import { useCallback, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from '../../contexts/AuthContext';
 import { fetchWithAuth } from '../../lib/api';
 import styles from './styles';
+const AsyncStorage = require('@react-native-async-storage/async-storage').default;
+const Updates = require('expo-updates');
 
 
 
@@ -27,6 +31,8 @@ type Rides = {
 
 export default function HomePage() {
     const [rides, setRides] = useState<Rides[]>([]);
+    const navigation = useNavigation<any>();
+    const { signOut } = useContext(AuthContext);
 
 
 
@@ -57,7 +63,24 @@ export default function HomePage() {
     return (
         <View style={styles.container}>
             <View>
-                <Text >Logout</Text>
+                <TouchableOpacity
+                    onPress={async () => {
+                        try {
+                            // Notifica backend se houver endpoint de logout (opcional)
+                            await fetchWithAuth('/logout', { method: 'POST' }).catch(() => {});
+
+                            // Usa o signOut do contexto para limpar token e estado do usuário
+                            await signOut();
+
+                            // Navega/reset para a tela de Login
+                            navigation.reset({ index: 0, routes: [{ name: 'Login' }] });
+                        } catch (error) {
+                            console.error('Erro ao deslogar:', error);
+                        }
+                    }}
+                >
+                    <Text style={styles.wrapperLogout}>Logout</Text>
+                </TouchableOpacity>
             </View>
 
             <FlatList

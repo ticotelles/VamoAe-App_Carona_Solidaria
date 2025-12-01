@@ -87,6 +87,10 @@ const styles = StyleSheet.create({
         padding: 3,
         backgroundColor:'#FFEDD5',
         borderRadius:12
+    },
+    wrapperLogout:{
+        textAlign:'right',
+        fontWeight:'bold',
     }
 });
 
