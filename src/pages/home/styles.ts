@@ -91,6 +91,11 @@ const styles = StyleSheet.create({
     wrapperLogout:{
         textAlign:'right',
         fontWeight:'bold',
+    },
+    contact:{
+        fontSize:16,
+        fontWeight:'bold',
+        color:'#2563EB'
     }
 });
 

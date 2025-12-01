@@ -133,9 +133,51 @@ export default function HomePage() {
                                 <Text style={styles.dateTextCard}>{item.date}</Text>
                             </View>
 
-                            <TouchableOpacity style={styles.buttonContact}>
+                            <View>
+                                <Text  style={styles.contact}>{item.whatsapp}</Text>
+                            </View>
+
+                            {/* <TouchableOpacity
+                                style={styles.buttonContact}
+                                onPress={async () => {
+                                    try {
+                                        const name = item.user?.fullname ?? 'Nome desconhecido';
+                                        const whatsapp = item.whatsapp ?? 'Não disponível';
+                                        const phoneSanitized = (item.whatsapp ?? '').replace(/\D/g, '');
+                                        const waUrl = phoneSanitized ? `https://wa.me/${phoneSanitized}` : null;
+
+                                        const buttons: any[] = [
+                                            { text: 'Fechar', style: 'cancel' }
+                                        ];
+
+                                        if (waUrl) {
+                                            buttons.push({
+                                                text: 'Abrir WhatsApp',
+                                                onPress: async () => {
+                                                    try {
+                                                       
+                                                        const supported = await Linking.canOpenURL(waUrl);
+                                                        if (supported) {
+                                                            await Linking.openURL(waUrl);
+                                                        } else {
+                                                            Alert.alert('Erro', 'Não foi possível abrir o WhatsApp neste dispositivo.');
+                                                        }
+                                                    } catch (err) {
+                                                        console.error('Erro ao abrir URL do WhatsApp:', err);
+                                                        Alert.alert('Erro', 'Não foi possível abrir o WhatsApp.');
+                                                    }
+                                                }
+                                            });
+                                        }
+
+                                        Alert.alert(name, `WhatsApp: ${whatsapp}`, buttons);
+                                    } catch (err) {
+                                        console.error('Erro ao mostrar contato:', err);
+                                    }
+                                }}
+                            >
                                 <Text style={styles.contactTextCard}>Contato</Text>
-                            </TouchableOpacity>
+                            </TouchableOpacity> */}
 
                         </View>
 
